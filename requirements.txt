@@ -1,3 +1,8 @@
+--trusted-host mirrors.aliyun.com --index-url http://mirrors.aliyun.com/pypi/simple/
+#--trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple
+# --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+#--trusted-host https://mirrors.tencent.com -i https://mirrors.tencent.com/pypi/simple
+
 pymupdf
 paddlepaddle==2.4.2
 paddleocr~=2.6.1.3
