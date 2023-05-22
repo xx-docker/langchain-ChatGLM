@@ -209,7 +209,7 @@ class LocalDocQA:
             docs = []
             for file in filepath:
                 try:
-                    docs += load_file(file)
+                    docs += load_file(file, sentence_size)
                     logger.info(f"{file} 已成功加载")
                     loaded_files.append(file)
                 except Exception as e:
