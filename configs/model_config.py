@@ -69,7 +69,7 @@ llm_model_dict = {
         "name": "llama",
         "pretrained_model_name": "fnlp/moss-moon-003-sft",
         "local_model_path": "/data/workdir/models/alpaca-chinese-7b0-hf",
-        "provides": "LammaLLM"
+        "provides": "LLamaLLM"
     }
 }
 
