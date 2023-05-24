@@ -165,13 +165,13 @@ class LocalDocQA:
                  top_k=VECTOR_SEARCH_TOP_K,
                  ):
         self.llm = llm_model
-        self.embeddings = HuggingFaceEmbeddings(model_name=embedding_model_dict[embedding_model],
-                                                model_kwargs={'device': embedding_device})
+        self.embeddings = HuggingFaceEmbeddings(model_name=embedding_model_dict[embedding_model], model_kwargs={'device': embedding_device})
         self.top_k = top_k
 
     def init_knowledge_vector_store(self,
                                     filepath: str or List[str],
                                     vs_path: str or os.PathLike = None,
+                                    knowledge_id: str = None, 
                                     sentence_size=SENTENCE_SIZE):
         loaded_files = []
         failed_files = []
@@ -224,7 +224,8 @@ class LocalDocQA:
             else:
                 if not vs_path:
                     vs_path = os.path.join(VS_ROOT_PATH,
-                                           f"""{"".join(lazy_pinyin(os.path.splitext(file)[0]))}_FAISS_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}""")
+                                           f"""{"".join(lazy_pinyin(os.path.splitext(file)[0]))}_FAISS_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}""" 
+                                           if not knowledge_id else knowledge_id)
                 vector_store = FAISS.from_documents(docs, self.embeddings)  # docs 为Document列表
                 torch_gc()
 

@@ -36,3 +36,7 @@ numpy~=1.23.5
 tqdm~=4.65.0
 requests~=2.28.2
 tenacity~=8.2.2
+#rwkv
+
+# bug no match_type 
+#protobuf==3.19.1

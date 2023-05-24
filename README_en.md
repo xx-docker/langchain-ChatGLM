@@ -2,7 +2,7 @@
 
 ## Introduction
 
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white "langchain-chatglm")](https://t.me/+RjliQ3jnJ1YyN2E9)
+[![Telegram](https://./docs/img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white "langchain-chatglm")](https://t.me/+RjliQ3jnJ1YyN2E9)
 
 🌍 [_中文文档_](README.md)
 
@@ -14,7 +14,7 @@
 
 ⛓️ The implementation principle of this project is illustrated in the figure below. The process includes loading files -> reading text -> text segmentation -> text vectorization -> question vectorization -> matching the top k most similar text vectors to the question vector -> adding the matched text to `prompt` along with the question as context -> submitting to `LLM` to generate an answer.
 
-![Implementation schematic diagram](img/langchain+chatglm.png)
+![Implementation schematic diagram](./docs/img/langchain+chatglm.png)
 
 🚩 This project does not involve fine-tuning or training; however, fine-tuning or training can be employed to optimize the effectiveness of this project.
 
@@ -109,7 +109,7 @@ Note: When using langchain.document_loaders.UnstructuredFileLoader for unstructu
 
 ### 2. Run Scripts to Experience Web UI or Command Line Interaction
 
-Execute [webui.py](webui.py) script to experience **Web interaction** <img src="https://img.shields.io/badge/Version-0.1-brightgreen">
+Execute [webui.py](webui.py) script to experience **Web interaction** <./docs/img src="https://./docs/img.shields.io/badge/Version-0.1-brightgreen">
 ```commandline
 python webui.py
 
@@ -131,19 +131,19 @@ $ npm run dev
 
 VUE interface screenshots:
 
-![](img/vue_0521_0.png)
+![](./docs/img/vue_0521_0.png)
 
-![](img/vue_0521_1.png)
+![](./docs/img/vue_0521_1.png)
 
-![](img/vue_0521_2.png)
+![](./docs/img/vue_0521_2.png)
 
 Web UI interface screenshots:
 
-![img.png](img/webui_0521_0.png)
+![./docs/img.png](./docs/img/webui_0521_0.png)
 
-![](img/webui_0510_1.png)
+![](./docs/img/webui_0510_1.png)
 
-![](img/webui_0510_2.png)
+![](./docs/img/webui_0510_2.png)
 
 The Web UI supports the following features:
 
