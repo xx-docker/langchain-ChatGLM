@@ -13,14 +13,16 @@ embedding_model_dict = {
     "ernie-tiny": "nghuyong/ernie-3.0-nano-zh",
     "ernie-base": "nghuyong/ernie-3.0-base-zh",
     "text2vec-base": "shibing624/text2vec-base-chinese",
-    "text2vec": "GanymedeNil/text2vec-large-chinese",
+    # "text2vec": "GanymedeNil/text2vec-large-chinese",
+    "text2vec": "/data/workdir/models/text2vec-large-chinese",
 }
 
 # Embedding model name
 EMBEDDING_MODEL = "text2vec"
 
 # Embedding running device
-EMBEDDING_DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+# EMBEDDING_DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+EMBEDDING_DEVICE = "cpu"
 
 
 # supported LLM models
@@ -35,7 +37,7 @@ llm_model_dict = {
     "chatglm-6b-int4": {
         "name": "chatglm-6b-int4",
         "pretrained_model_name": "THUDM/chatglm-6b-int4",
-        "local_model_path": None,
+        "local_model_path": "/data/workdir/models/chatglm-6b-int4",
         "provides": "ChatGLM"
     },
     "chatglm-6b-int8": {
@@ -62,11 +64,17 @@ llm_model_dict = {
         "pretrained_model_name": "fnlp/moss-moon-003-sft",
         "local_model_path": None,
         "provides": "MOSSLLM"
+    },
+    "llama": {
+        "name": "llama",
+        "pretrained_model_name": "fnlp/moss-moon-003-sft",
+        "local_model_path": "/data/workdir/models/alpaca-chinese-7b0-hf",
+        "provides": "LammaLLM"
     }
 }
 
 # LLM model name
-LLM_MODEL = "chatglm-6b"
+LLM_MODEL = "chatglm-6b-int4"
 
 # LLM lora path，默认为空，如果有请直接指定文件夹路径
 LLM_LORA_PATH = ""

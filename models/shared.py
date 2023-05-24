@@ -23,6 +23,7 @@ def loaderLLM(llm_model: str = None, no_remote_model: bool = False, use_ptuning_
 
     if no_remote_model:
         loaderCheckPoint.no_remote_model = no_remote_model
+        
     if use_ptuning_v2:
         loaderCheckPoint.use_ptuning_v2 = use_ptuning_v2
 

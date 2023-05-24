@@ -7,13 +7,14 @@
   "workbench.iconTheme": "file-icons-mac",
   "workbench.fontAliasing": "antialiased",
   "workbench.sash.size": 12,
-  "window.zoomLevel": 0.6, // 放大1.2倍
+  "window.zoomLevel": 0.3, // 放大1.2倍
   "workbench.activityBar.visible": true,
-  // "editor.fontFamily": "Input Mono, Fira Code, monospace",
+  "editor.fontFamily": "Consolas, 'Courier New', monospace",
+  // "editor.fontFamily":"Droid Sans Mono, Droid Sans Fallback", 
   "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss06', 'zero'",
 
   // Editor
-  "editor.fontSize": 13,
+  "editor.fontSize": 15,
   "editor.codeLensFontSize": 0,
   "editor.accessibilitySupport": "off",
   "editor.cursorSmoothCaretAnimation": "on",
@@ -82,16 +83,29 @@
     "**/tmp": true,
     "**/yarn.lock": true
   },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "***/ui/**": true,
+    "***/logs/**": true,
+    "**/node_modules/*/**": true,
+    "**/__pycache__/*/**": true,
+  }, 
   // Custom Some settings
-  //
-  "pasteImage.showFilePathConfirmInputBox": true, 
-  "pasteImage.namePrefix": "image_",
-  "pasteImage.basePath": "${currentFileDir}/images/",
-  
+  // 
   "trunk.autoInit": true,
   "github.gitProtocol": "ssh",
   "githubPullRequests.logLevel": "off",
 
+  // python django settings 
+  "python.defaultInterpreterPath": "/usr/local/miniconda3/bin/python",
+  "python.analysis.logLevel": "Warning",
+  
+  // "python.analysis.fixAll": [],
+
+  "latex-workshop.bibtex-format.sort.enabled": false,
+  "markdown-image.local.path": "/images",
+  // "markdown-image.coding.path": "/",
   // rust settings 
   "rust-analyzer.cargo.autoreload": true,
   "rust-analyzer.completion.limit": null,

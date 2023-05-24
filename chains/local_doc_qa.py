@@ -4,6 +4,7 @@ from langchain.document_loaders import UnstructuredFileLoader, TextLoader
 from configs.model_config import *
 import datetime
 from textsplitter import ChineseTextSplitter
+# from textsplitter import AliTextSplitter as ChineseTextSplitter
 from typing import List, Tuple, Dict
 from langchain.docstore.document import Document
 import numpy as np
@@ -19,7 +20,7 @@ from models.loader.args import parser
 from models.loader import LoaderCheckPoint
 import models.shared as shared
 from agent import bing_search
-from langchain.docstore.document import Document
+# from langchain.docstore.document import Document
 
 
 def load_file(filepath, sentence_size=SENTENCE_SIZE):

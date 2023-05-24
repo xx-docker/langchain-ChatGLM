@@ -1,12 +1,15 @@
 from langchain.text_splitter import CharacterTextSplitter
 import re
 from typing import List
+from modelscope.pipelines import pipeline
+# from transformers.pipelines import pipeline
 
 
 class AliTextSplitter(CharacterTextSplitter):
     def __init__(self, pdf: bool = False, **kwargs):
         super().__init__(**kwargs)
         self.pdf = pdf
+        # self.sentence_size = 100
 
     def split_text(self, text: str) -> List[str]:
         # use_document_segmentation参数指定是否用语义切分文档，此处采取的文档语义分割模型为达摩院开源的nlp_bert_document-segmentation_chinese-base，论文见https://arxiv.org/abs/2107.09278
@@ -16,12 +19,12 @@ class AliTextSplitter(CharacterTextSplitter):
             text = re.sub(r"\n{3,}", r"\n", text)
             text = re.sub('\s', " ", text)
             text = re.sub("\n\n", "", text)
-        from modelscope.pipelines import pipeline
 
         p = pipeline(
             task="document-segmentation",
-            model='damo/nlp_bert_document-segmentation_chinese-base',
+            model='/data/workdir/models/nlp_bert_document-segmentation_chinese-base/',
             device="cpu")
         result = p(documents=text)
         sent_list = [i for i in result["text"].split("\n\t") if i]
         return sent_list
+
