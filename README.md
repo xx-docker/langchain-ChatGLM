@@ -3,6 +3,10 @@
 
 
 
+## 使用 `alpaca-chinese`
+- `git clone https://huggingface.co/redauzhang/alpaca-chinese-7b-hf`
+
+
 
 ## 引用
 
