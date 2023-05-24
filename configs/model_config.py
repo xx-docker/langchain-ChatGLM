@@ -61,8 +61,8 @@ llm_model_dict = {
     },
     "moss": {
         "name": "moss",
-        "pretrained_model_name": "fnlp/moss-moon-003-sft",
-        "local_model_path": None,
+        "pretrained_model_name": "fnlp/moss-moon-003-sft-int4",
+        "local_model_path": "/data/workdir/models/moss-moon-003-sft-int4",
         "provides": "MOSSLLM"
     },
     "llama": {
@@ -70,7 +70,7 @@ llm_model_dict = {
         "pretrained_model_name": "fnlp/moss-moon-003-sft",
         "local_model_path": "/data/workdir/models/alpaca-chinese-7b0-hf",
         "provides": "LLamaLLM"
-    }
+    },
 }
 
 # LLM model name
