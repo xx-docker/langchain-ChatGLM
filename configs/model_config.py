@@ -13,14 +13,16 @@ embedding_model_dict = {
     "ernie-tiny": "nghuyong/ernie-3.0-nano-zh",
     "ernie-base": "nghuyong/ernie-3.0-base-zh",
     "text2vec-base": "shibing624/text2vec-base-chinese",
-    "text2vec": "GanymedeNil/text2vec-large-chinese",
+    # "text2vec": "GanymedeNil/text2vec-large-chinese",
+    "text2vec": "/data/workdir/models/text2vec-large-chinese",
 }
 
 # Embedding model name
 EMBEDDING_MODEL = "text2vec"
 
 # Embedding running device
-EMBEDDING_DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+# EMBEDDING_DEVICE = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+EMBEDDING_DEVICE = "cpu"
 
 
 # supported LLM models
@@ -34,7 +36,7 @@ llm_model_dict = {
     },
     "chatglm-6b-int4": {
         "name": "chatglm-6b-int4",
-        "pretrained_model_name": "THUDM/chatglm-6b-int4",
+        "pretrained_model_name": "/data/workdir/models/chatglm-6b-int4/",
         "local_model_path": None,
         "provides": "ChatGLM"
     },
@@ -76,7 +78,7 @@ llm_model_dict = {
         "pretrained_model_name": "chatglm-6b",
         "local_model_path": None,
         "provides": "FastChatOpenAILLM",  # 使用fastchat api时，需保证"provides"为"FastChatOpenAILLM"
-        "api_base_url": "http://localhost:8000/v1"  # "name"修改为fastchat服务中的"api_base_url"
+        "api_base_url": "https://sec-x.woa.com/v1"  # "name"修改为fastchat服务中的"api_base_url"
     },
 
     # 通过 fastchat 调用的模型请参考如下格式
@@ -87,10 +89,19 @@ llm_model_dict = {
         "provides": "FastChatOpenAILLM",  # 使用fastchat api时，需保证"provides"为"FastChatOpenAILLM"
         "api_base_url": "http://localhost:8000/v1"  # "name"修改为fastchat服务中的"api_base_url"
     },
+    
+    "fastchat-x-sec": {
+        "name": "keen-text-generator-002",  # "name"修改为fastchat服务中的"model_name"
+        "pretrained_model_name": "chatglm-6b",
+        "local_model_path": None,
+        "provides": "FastChatOpenAILLM",  # 使用fastchat api时，需保证"provides"为"FastChatOpenAILLM"
+        "api_base_url": "https://sec-x.woa.com/v1"  # "name"修改为fastchat服务中的"api_base_url"
+    },
 }
 
 # LLM 名称
-LLM_MODEL = "chatglm-6b"
+LLM_MODEL = "fastchat-x-sec"
+# LLM_MODEL = "chatglm-6b-int4"
 # 如果你需要加载本地的model，指定这个参数  ` --no-remote-model`，或者下方参数修改为 `True`
 NO_REMOTE_MODEL = False
 # 量化加载8bit 模型

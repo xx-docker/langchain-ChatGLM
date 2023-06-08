@@ -98,18 +98,24 @@ class FastChatOpenAILLM(RemoteRpcModel, LLM, ABC):
         try:
             import openai
             # Not support yet
-            openai.api_key = "EMPTY"
-            openai.api_base = self.api_base_url
+            openai.api_key = "hCKimvqJWfK16svqcgtGxP1/P4M5wv0a"
+            # openai.api_base = self.api_base_url
+            openai.api_base = "https://sec-x.woa.com/v1"
+            # openai.Embedding = 
         except ImportError:
             raise ValueError(
                 "Could not import openai python package. "
                 "Please install it with `pip install openai`."
             )
         # create a chat completion
+        # print(openai.api_base)
         completion = openai.ChatCompletion.create(
-            model=self.model_name,
+            # model=self.model_name,
+            model="sec-x-text-hunyuan-7b-001", 
             messages=self.build_message_list(prompt)
         )
+
+        # print(completion)
 
         history += [[prompt, completion.choices[0].message.content]]
         answer_result = AnswerResult()
