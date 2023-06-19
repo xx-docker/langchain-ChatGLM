@@ -17,6 +17,7 @@ def show_result(result, call_type="text"):
 
 【引用】""")
         for x in dict_src_doc:
-            print(f"\t\t {x['metadata']['source']} ({x['metadata']['category']}) -- {x['page_content']}")
+            # print(f"\t\t {x['metadata']['source']} ({x['metadata']['category']}) -- {x['page_content']}")
+            print(x)
         print("----------------------")
     return dict(refs=dict_src_doc, query=query, answer=answer)

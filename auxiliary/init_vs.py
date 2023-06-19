@@ -18,9 +18,13 @@ REPLY_WITH_SOURCE = True
 
 from utils.gen_docs import  get_all_doc_filenames
 
+from langchain.vectorstores.faiss import FAISS
+from langchain.embeddings.openai import OpenAIEmbeddings
+
 
 def main():
     # cp -r /data/workdir/qcloud-documents/product/安全服务/主机安全/ /home/cwp_docs
+
     local_doc_qa = LocalDocQA()
     local_doc_qa.init_cfg(llm_model=None,
                           embedding_model=EMBEDDING_MODEL,
