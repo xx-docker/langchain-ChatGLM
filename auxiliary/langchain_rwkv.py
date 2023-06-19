@@ -23,6 +23,8 @@ from langchain.llms import RWKV, OpenAI
 # os.environ["http_proxy"] = 'http://127.0.0.1:54321'
 # os.environ["https_proxy"] = 'http://127.0.0.1:54321'
 
+# from langchain.embeddings.openai import OpenAIEmbeddings
+
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.document_loaders import UnstructuredFileLoader
@@ -36,6 +38,7 @@ os.environ["RWKV_JIT_ON"] = "1"
 def load_rwkv_llm():
     myRWKV = RWKV(model=RWKV_MODEL_PTH,
             tokens_path=os.path.join(PROJECT_DIR, "auxiliary/rwkv", "20B_tokenizer.json"), 
+            # strategy="cuda fp16", 
             strategy="cuda fp16", 
             top_p=0.7, 
             temperature=0.5,
@@ -43,6 +46,17 @@ def load_rwkv_llm():
             max_tokens_per_generation=1024
         )
     return myRWKV
+
+def load_rwkv_llm_cpu():
+    return RWKV(model="/data/workdir/models/Q8_0-RWKV-4-Raven-7B-v11-Eng49%-Chn49%-Jpn1%-Other1%-20230430-ctx8192.bin",
+            tokens_path=os.path.join(PROJECT_DIR, "auxiliary/rwkv", "20B_tokenizer.json"), 
+            # strategy="cuda fp16", 
+            strategy="cpu fp16", 
+            top_p=0.7, 
+            temperature=0.5,
+            CHUNK_LEN=200, 
+            max_tokens_per_generation=1024
+        )
 
 
 def get_query_answer(query, llm, docsearch, ):
@@ -56,6 +70,7 @@ from auxiliary.console.show_result import show_result
 
 def test():
     llm = load_rwkv_llm() 
+
     embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL, model_kwargs={'device': "cpu"})
 
     docsearch = FAISS.load_local(folder_path=FAISS_VS_STORE, embeddings=embeddings)
@@ -81,5 +96,12 @@ def test():
         print("-------------------------------------------")
 
 
+def demo():
+    llm = load_rwkv_llm_cpu() 
+    rsp = llm.predict("说一个小故事")
+
+    print(rsp)
+
+
 if __name__ == "__main__":
-    test() 
+    demo() 
